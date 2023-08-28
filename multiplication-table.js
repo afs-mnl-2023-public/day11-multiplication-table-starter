@@ -1,17 +1,34 @@
 function generateExpression(multiplicand, multiplier) {
-   return "";
+    const separator = multiplicand == multiplier ? '' : '\t';
+
+    return `${multiplicand}*${multiplier}=${multiplicand*multiplier}${separator}`;
 }
 
 function generateLine(lineStart, lineEnd) {
-    return "";
+    let result = "";
+
+    for (let index = lineStart; index <= lineEnd; index++) {
+        result = result + generateExpression(index, lineEnd);
+    }
+
+    return result;
 }
 
 function generateAllLines(start, end) {
-    return "";
+    let result = "";
+    for(let index=start; index<=end; index++ ) {
+        let lineSeparator = index == end ? '' : '\n';
+
+        result += generateLine(start, index) + lineSeparator;
+    }
+
+    return result;
 }
 
 function isValid(start, end) {
-   false;
+    const MIN = 1;
+    const MAX = 1000;
+    return start <= end && start >= MIN && end <= MAX;
 }
 
 export default {
